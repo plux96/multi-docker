@@ -1,4 +1,4 @@
-sudo:required
+sudo: required
 language: generic
 services:
   - docker
@@ -14,13 +14,10 @@ after_success:
   - docker build -t plux96/multi-nginx ./nginx
   - docker build -t plux96/multi-server ./server
   - docker build -t plux96/multi-worker ./worker
-  # LOGIN docker CLI 
+  # LOGIN docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and to push Docker Hub
   - docker push plux96/multi-client
   - docker push plux96/multi-nginx
   - docker push plux96/multi-server
   - docker push plux96/multi-worker
-
-
-
